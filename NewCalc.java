@@ -1,4 +1,4 @@
-
+// new version(its Ryan's)
     import java.util.Scanner;
 
     public class Main {
