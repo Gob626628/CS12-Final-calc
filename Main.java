@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
+
+
 public class Main {
+
+
 
 
     public static void main(String[] args) {
@@ -12,9 +18,11 @@ public class Main {
 
 
 
+
         while (true) {
             printMenu();
             int choice = getUserChoice(scanner);
+
 
 
 
@@ -35,10 +43,8 @@ public class Main {
                 case 10 -> performPiOperation(scanner);
                 case 11 -> performSquare(scanner);
                 case 12 -> performCube(scanner);
-                case 13 -> performTan(scanner);
-                case 14 -> performSin(scanner);
-                case 15 -> performCos(scanner);
-                case 16 ->
+                case 13 -> PreformScientificNotation(scanner);
+
 
 
 
@@ -65,10 +71,9 @@ public class Main {
         System.out.println("9 - Square root ");
         System.out.println("10 - Pi ");
         System.out.println("11 - Square ");
-        System.out.println("12 - Cube ");
-        System.out.println("13 - Tan ");
-        System.out.println("14 - Sin ");
-        System.out.println("15 - Cos ");
+        System.out.println("13 - Scientific Notation ");
+
+
 
 
 
@@ -80,7 +85,7 @@ public class Main {
 
 
     // Get user's choice from the menu
-    private static int getUserChoice(Scanner scanner) {
+    public static int getUserChoice(Scanner scanner) {
         System.out.print("Enter your choice: ");
         while (!scanner.hasNextInt()) {
             System.out.println("Invalid input. Please enter a number.");
@@ -88,7 +93,6 @@ public class Main {
         }
         return scanner.nextInt();
     }
-
 
 
     // Helper method to get valid numeric input from the user
@@ -102,7 +106,6 @@ public class Main {
             }
         }
     }
-
 
 
     // Addition operation
@@ -218,6 +221,7 @@ public class Main {
 
 
 
+
         // Perform merge sort
         mergeSort(numberList);
 
@@ -306,7 +310,7 @@ public class Main {
 
 
         System.out.print("Enter the number to search: ");
-        double target = getValidNumberInput(scanner);
+        double target = scanner.nextDouble();
 
 
 
@@ -506,74 +510,38 @@ public class Main {
     }
 
 
-    private static void performTan(Scanner scanner)
-    {
-        System.out.print("Enter the number you want to tan of: ");
-        double number = getValidNumberInput(scanner);
+// make and read a Scientific notation in the same function
+    private static void PreformScientificNotation(Scanner scanner) {
+
+        Scanner look = new Scanner(System.in);
+        System.out.println("Convert to (1) or from (2) scientific notation?");
+        int choice = scanner.nextInt();
 
 
-        System.out.println(Math.tan(number));
-        System.out.println();
-    }
 
-    private static void performSin(Scanner scanner)
-    {
-        System.out.print("Enter the number you want to sin of: ");
-        double number = getValidNumberInput(scanner);
+        if (choice == 1) {
+
+            System.out.println("Enter a number to convert to scientific notation:"); // make to sci notation
+            double number = scanner.nextDouble();
 
 
-        System.out.println(Math.sin(number));
-        System.out.println();
-    }
 
+        } else if (choice == 2) {// expands a sci notation
 
-    private static void performCos(Scanner scanner)
-    {
-        System.out.print("Enter the number you want to cos of: ");
-        double number = getValidNumberInput(scanner);
-
-
-        System.out.println(Math.cos(number));
-        System.out.println();
-    }
-
-
-    public class ScientificNotationConverter {
-
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Convert to (1) or from (2) scientific notation?");
-            int choice = scanner.nextInt();
-
-            if (choice == 1) {
-                // Convert to scientific notation
-                System.out.println("Enter a number to convert to scientific notation:");
-                double number = scanner.nextDouble();
-                toScientificNotation(number);
-            } else if (choice == 2) {
-                // Convert from scientific notation
-                System.out.println("Enter the coefficient (a):");
-                double coefficient = scanner.nextDouble();
-                System.out.println("Enter the exponent (n):");
-                int exponent = scanner.nextInt();
-                fromScientificNotation(coefficient, exponent);
-            } else {
-                System.out.println("Invalid choice. Please choose 1 or 2.");
-            }
-
+            System.out.print("Enter the coefficient (a):");
+            System.out.println("a10^n");
+            double coefficient = scanner.nextDouble();
+            System.out.print("Enter the exponent (n):");
+            System.out.println("a10^n");
+            int exponent = scanner.nextInt();
             scanner.close();
+
+        } else {
+            System.out.println("Invalid choice. Please choose 1 or 2.");
+            return ;
         }
 
-        private static void toScientificNotation(double number) {
-            // Implement the logic to convert 'number' to scientific notation
-            // Display the result
-            System.out.println("The scientific notation is: " + number);
-        }
 
-        private static void fromScientificNotation(double coefficient, int exponent) {
-            // Implement the logic to convert from scientific notation
-            // Display the result
-            System.out.println("The number is: " + coefficient + "e^" + exponent);
-        }
     }
 }
+
